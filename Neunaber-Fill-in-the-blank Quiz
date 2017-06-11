@@ -1,0 +1,74 @@
+import sys
+
+# I found the Python Basic Tutorial located on the Tutorials Point website to be very helpful in understanding Python https://www.tutorialspoint.com/python/python_decision_making.htm
+# Another great site is "THENEWBOSTON". Site has several helpful videos to make python easier.
+# Was a big fan of Press Your Luck Game show growing up LOL.
+print ("Thank you for participating in Doug's 'Press Your Luck' game! \n")
+
+
+blank_spaces = ["__1__","__2__","__3__", "__4__"]
+
+# Question section labeled simple, medium and hard.
+simple_questions = '''Python is a widely used __1__ programming language for __2__ programming, created by __3__ Van Rossum and first released in __4__.'''
+
+medium_questions = '''Decision structures in Python __1__ multiple expressions which produce __2__ or __3__ as the outcome. You need to determine which action 
+to take and which statements to execute if the __4__ is TRUE or FALSE otherwise.'''
+ 
+difficult_questions = '''Python is a __1__, interpreted, __2__ and object-oriented scripting language. __3__ is designed to be highly readable. 
+It uses English keywords frequently where as other languages use punctuation, and it has fewer __4__ constructions than other languages...'''
+
+# Answers to each fill in the blank question.
+answers_simple = ["high-level", "general-purpose", "Guido", "1991"]
+answers_medium = ["evaluate", "true", "false", "outcome"]
+answers_difficult = ["high-level", "interactive", "Python", "syntactical"]
+
+
+# Game choice, this will allow the contestant to pick which their game level preference (simple, medium & difficult).
+# https://thenewboston.com/videos.php?cat=98&video=20112 provides a great example of 'if elif else'.
+def game_level(difficulty_level):
+    if difficulty_level == "simple":
+        print "\nsimple, 'Press Your Luck!' \n" # \n is used to clean up sentence spacing.
+        return simple_questions, answers_simple
+    elif difficulty_level == "medium":
+        print "\nmedium, 'Press Your Luck!' \n"
+        return medium_questions, answers_medium
+    else:
+        difficulty_level == "difficult"
+        print "\ndifficult, 'Press Your Luck!' \n"
+        return difficult_questions, answers_difficult
+    
+
+def Press_Your_Luck_game():
+    contestant_name = raw_input("Please tell us your name!")
+    print "\nWelcome to Press Your Luck" " " + contestant_name + "! \n"
+    print "Get ready to Press Your Luck! \n"
+
+    difficulty_selection = raw_input(contestant_name + ", ""what category would you like to play from? 'simple', 'medium', or 'difficult'?")
+
+    if difficulty_selection == "simple" or difficulty_selection == "medium" or difficulty_selection == "difficult":
+        questions, answers = game_level(difficulty_selection)
+        print questions
+    index = 0
+     
+    while index < 4: # Great example of "While" video at https://thenewboston.com/videos.php?cat=98&video=20114. 
+        user_input = raw_input("\nPlease choose the answer for: " + str(index + 1) + " \n>>>")
+        fill = []
+        if user_input == answers[index]: # Contestants answer to each question blank.
+            print "\nCorrect, keep on pressing your luck! \n"
+            for word in questions:   
+              if word == blank_spaces[index]:  # This will add the chosen word to the blank
+                 word == word.fill(user_input)
+                 fill.append(word)  # input user answer
+              else:
+                    fill.append(word)  
+            questions_list = "".join(fill)
+            index = index + 1
+        elif user_input != answers[index]:
+          print "\nWHAMMY!!! take another spin.\n"
+    
+    else:
+      print "Congratulations " + contestant_name + " you are today's 'Press Your Luck' Champion!"
+
+Press_Your_Luck_game()
+
+
